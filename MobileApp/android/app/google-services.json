@@ -1,0 +1,51 @@
+{
+  "project_info": {
+    "project_number": "1089330872285",
+    "firebase_url": "https://riding-apps-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "riding-apps",
+    "storage_bucket": "riding-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089330872285:android:45c64636dc76ce5cd28034",
+        "android_client_info": {
+          "package_name": "com.clemopi.um6p"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089330872285-4dqh3atkima1a8qiq0b6se7kkqqq0mmu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clemopi.um6p",
+            "certificate_hash": "e239ba9b0a0c927bc9e7dae465844fcb35bf187b"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSGGIbs2IWFJfb_j_w47HyPWAq8vfIPBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089330872285-32ocgd81gp0oub8bkg1u6tc50gnn78s6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1089330872285-7uvlet9ico29gr7nlth3eislfjbh3ct9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mascir.projectKs"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

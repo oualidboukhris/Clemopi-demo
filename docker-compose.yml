@@ -1,0 +1,131 @@
+version: "3.8"
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: clemopi_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./Backend/clemopi_db.sql:/docker-entrypoint-initdb.d/clemopi_db.sql
+    networks:
+      - clemopi_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Backend API
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: clemopi_backend
+    restart: unless-stopped
+    ports:
+      - "${PORT_SERVER}:${PORT_SERVER}"
+    environment:
+      PORT_SERVER: ${PORT_SERVER}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
+      TOKEN: ${TOKEN}
+      ACCESS_TOKEN: ${ACCESS_TOKEN}
+      TOKEN_TYPE: ${TOKEN_TYPE}
+      ACCESS_TOKEN_EXPIRESIN: ${ACCESS_TOKEN_EXPIRESIN}
+      REFRESH_TOKEN: ${REFRESH_TOKEN}
+      REFRESH_TOKEN_EXPIRESIN: ${REFRESH_TOKEN_EXPIRESIN}
+      MQTT_HOST: mosquitto
+      MQTT_PORT: ${MQTT_PORT:-1883}
+      MQTT_PROTOCOL: ${MQTT_PROTOCOL:-mqtt}
+      MQTT_USERNAME: ${MQTT_USERNAME:-}
+      MQTT_PASSWORD: ${MQTT_PASSWORD:-}
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+      - ./Backend/uploads:/app/uploads
+    depends_on:
+      mysql:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
+    networks:
+      - clemopi_network
+
+  # MQTT Broker (Mosquitto)
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: clemopi_mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883" # MQTT
+      - "9001:9001" # WebSocket
+    volumes:
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_logs:/mosquitto/log
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto-no-auth.conf:/mosquitto-no-auth.conf
+    networks:
+      - clemopi_network
+    command: mosquitto -c /mosquitto-no-auth.conf
+
+  # Frontend
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      # Build args for React (required during build time)
+      args:
+        REACT_APP_GOOGLE_MAPS_KEY: ${REACT_APP_GOOGLE_MAPS_KEY}
+        REACT_APP_URL: ${REACT_APP_URL}
+        REACT_APP_URL_IMAGE: ${REACT_APP_URL_IMAGE}
+    container_name: clemopi_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    # Runtime environment variables (optional for Nginx, but good practice)
+    environment:
+      REACT_APP_GOOGLE_MAPS_KEY: ${REACT_APP_GOOGLE_MAPS_KEY}
+      REACT_APP_URL: ${REACT_APP_URL}
+      REACT_APP_URL_IMAGE: ${REACT_APP_URL_IMAGE}
+    depends_on:
+      - backend
+    networks:
+      - clemopi_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: clemopi_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: ${PMA_HOST:-mysql}
+      PMA_PORT: ${PMA_PORT:-3306}
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      - mysql
+    networks:
+      - clemopi_network
+
+volumes:
+  mysql_data:
+    driver: local
+  mosquitto_data:
+    driver: local
+  mosquitto_logs:
+    driver: local
+
+networks:
+  clemopi_network:
+    driver: bridge

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate QR Code - CleMoPI</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 2.5em;
+      }
+
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 1.1em;
+      }
+
+      .input-group {
+        margin-bottom: 30px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        transition: border 0.3s;
+      }
+
+      input[type="text"]:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .btn {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-success {
+        background: #48bb78;
+      }
+
+      .btn-success:hover {
+        background: #38a169;
+      }
+
+      .btn-secondary {
+        background: #718096;
+      }
+
+      .btn-secondary:hover {
+        background: #4a5568;
+      }
+
+      #qrCodeContainer {
+        margin: 30px 0;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        display: none;
+      }
+
+      #qrCodeContainer.show {
+        display: block;
+      }
+
+      #qrcode {
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        display: inline-block;
+      }
+
+      .qr-label {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 15px;
+      }
+
+      .actions {
+        margin-top: 20px;
+      }
+
+      .examples {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        text-align: left;
+      }
+
+      .examples h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+      }
+
+      .examples ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .examples li {
+        padding: 10px;
+        margin: 5px 0;
+        background: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .examples li:hover {
+        background: #667eea;
+        color: white;
+        transform: translateX(5px);
+      }
+
+      .info-box {
+        background: #e6f3ff;
+        border-left: 4px solid #667eea;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 5px;
+        text-align: left;
+      }
+
+      .info-box h4 {
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        .container {
+          box-shadow: none;
+        }
+
+        input,
+        .btn,
+        .examples,
+        .subtitle {
+          display: none !important;
+        }
+
+        #qrCodeContainer {
+          display: block !important;
+          background: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🛴 CleMoPI QR Generator</h1>
+      <p class="subtitle">Generate QR codes for your scooters</p>
+
+      <div class="input-group">
+        <input
+          type="text"
+          id="qrInput"
+          placeholder="Enter QR Code ID (e.g., QR198676)"
+          value="QR198676"
+          onkeypress="if(event.key === 'Enter') generateQR()"
+        />
+      </div>
+
+      <button class="btn" onclick="generateQR()">🎯 Generate QR Code</button>
+
+      <div id="qrCodeContainer">
+        <div class="qr-label" id="qrLabel"></div>
+        <div id="qrcode"></div>
+        <div class="actions">
+          <button class="btn btn-success" onclick="downloadQR()">
+            💾 Download PNG
+          </button>
+          <button class="btn btn-secondary" onclick="window.print()">
+            🖨️ Print
+          </button>
+          <button class="btn" onclick="generateAnother()">
+            ➕ Generate Another
+          </button>
+        </div>
+      </div>
+
+      <div class="examples">
+        <h3>📝 Example QR Codes:</h3>
+        <ul>
+          <li onclick="setQRCode('QR198676')">🛴 QR198676</li>
+          <li onclick="setQRCode('QR198677')">🛴 QR198677</li>
+          <li onclick="setQRCode('QR198678')">🛴 QR198678</li>
+          <li onclick="setQRCode('SCOOTER001')">🛴 SCOOTER001</li>
+          <li onclick="setQRCode('CLEMOPI-01')">🛴 CLEMOPI-01</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>📱 How to use:</h4>
+        <ol style="margin-left: 20px">
+          <li>Enter a unique ID for your scooter</li>
+          <li>Click "Generate QR Code"</li>
+          <li>Download or print the QR code</li>
+          <li>Attach to your scooter</li>
+          <li>Users scan with mobile app to unlock!</li>
+        </ol>
+      </div>
+    </div>
+
+    <script>
+      let currentQRCode = null;
+
+      function generateQR() {
+        const input = document.getElementById("qrInput").value.trim();
+
+        if (!input) {
+          alert("Please enter a QR code ID");
+          return;
+        }
+
+        // Clear previous QR code
+        const qrDiv = document.getElementById("qrcode");
+        qrDiv.innerHTML = "";
+
+        // Generate new QR code
+        currentQRCode = input;
+
+        QRCode.toCanvas(
+          input,
+          {
+            width: 300,
+            margin: 2,
+            color: {
+              dark: "#000000",
+              light: "#FFFFFF",
+            },
+          },
+          function (error, canvas) {
+            if (error) {
+              console.error(error);
+              alert("Error generating QR code");
+              return;
+            }
+
+            qrDiv.appendChild(canvas);
+            document.getElementById("qrLabel").textContent = input;
+            document.getElementById("qrCodeContainer").classList.add("show");
+          }
+        );
+      }
+
+      function downloadQR() {
+        if (!currentQRCode) {
+          alert("Please generate a QR code first");
+          return;
+        }
+
+        QRCode.toDataURL(
+          currentQRCode,
+          {
+            width: 500,
+            margin: 4,
+          },
+          function (error, url) {
+            if (error) {
+              console.error(error);
+              alert("Error downloading QR code");
+              return;
+            }
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = `scooter-${currentQRCode}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        );
+      }
+
+      function setQRCode(code) {
+        document.getElementById("qrInput").value = code;
+        generateQR();
+      }
+
+      function generateAnother() {
+        document.getElementById("qrInput").value = "";
+        document.getElementById("qrCodeContainer").classList.remove("show");
+        document.getElementById("qrInput").focus();
+      }
+
+      // Generate initial QR code on page load
+      window.onload = function () {
+        generateQR();
+      };
+    </script>
+  </body>
+</html>

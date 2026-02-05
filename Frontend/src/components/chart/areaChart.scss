@@ -1,0 +1,70 @@
+$primaryColor : #ADC347;
+$primaryColorDark :#191A1A;
+
+
+.AreaLine {
+    width: 700px;
+    
+    .areaChart-description {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        .download-chart {
+            cursor: pointer;
+            .download-icon {
+            font-size: 18px;
+            color: #191A1A;
+            font-weight: bold;
+            text-transform: capitalize;
+            }
+        }
+    }
+
+}
+@media only screen and (max-width: 600px) {
+    .AreaLine {
+        width: 450px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 600px) {
+    .AreaLine {
+        width: 450px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .AreaLine {
+        width: 450px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .AreaLine {
+        width: 500px;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .AreaLine {
+        width: 700px;
+        margin-bottom: 30px;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .AreaLine {
+        width: 780px;
+        margin-bottom: 30px;
+    }
+}
+
+
+@media only screen and (min-width: 2560px) {
+    .AreaLine {
+        width: 1800px;
+        margin-bottom: 30px;
+    }
+}
+

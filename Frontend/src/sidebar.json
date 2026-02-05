@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Dashboard",
+        "icon": "AiOutlineDashboard",
+        "url": "/dashboard",
+        "childrens": []
+    },
+    {
+        "title": "KickScooters",
+        "icon": "GiKickScooter",
+        "childrens": [
+            {
+                "url": "/kick-scooters",
+                "title": "Vehicle list"
+            },
+            {
+                "url": "/kick-scooter",
+                "title": "Search vehicle"
+            },
+            {   "url":"/map-view",
+                "title": "Map View"
+            }
+        ]
+    },
+    {
+        "title": "Users",
+        "icon": "AiOutlineUser",
+        "isShowing": true,
+        "childrens": [
+            {   "url":"/users",
+                "title": "User list"
+            },
+            {   "url":"/user",
+                "title": "User search"
+            }
+        ]
+    }
+]

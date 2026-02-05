@@ -1,0 +1,39 @@
+
+$primaryColor : #ADC347;
+$primaryColorDark :#191A1A;
+
+.Piechart {
+   .description-pichart {
+    .description-item {
+        display: flex;
+        .description-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid #EBEEF5;
+            border-radius: 5px;
+            &:nth-child(2){
+                margin-left: 15px;
+            }
+            .description-title{
+                background-color: #fafafa;
+                padding: 10px;  
+                font-size: 15px;
+            }
+            .avatar {
+                margin-left: 15px;
+                margin-right: 15px;
+                span {
+                    font-size: 12px;
+                    color: $primaryColorDark;
+                    font-weight: bold;
+                }
+            }
+
+
+        }
+    }
+   }
+    
+
+}

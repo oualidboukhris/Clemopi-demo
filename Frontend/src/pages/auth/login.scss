@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("../../fonts/Roboto-Regular.ttf");
+}
+
+$primaryColor : #ADC347;
+$primaryColorBlack :#191A1A;
+
+.Login {
+    font-family: 'Roboto';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .bg__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        z-index: -1;
+    }
+
+    .form__login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .logo__image {
+            width: 250px;
+            margin-bottom: 30px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            label {
+                color: #ADC347;
+                font-size: 14px;
+                font-weight: normal;
+            }
+            .input-group {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                .ValidationForm {
+                    margin-top: 10px;
+                    font-size: 13px;
+                    color: #f71d33;
+                }
+
+                .input-item {
+                    height: 28px;
+                    width: 250px;
+                    outline: none;
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: #ADC347 1px solid;
+                    color: white;
+                    &.invalid {
+                        border-bottom: #f71d33 1px solid;
+                    }
+                    &:focus {
+                        background-color: transparent;
+                     
+                    }
+
+                }
+
+                &:nth-child(2) {
+                    margin-top: 30px;
+                }
+            }
+
+            .input__checkbox {
+                margin-top: 20px;
+                input[type=checkbox] {
+                    margin-right: 5px;
+                    accent-color: $primaryColor;    
+                }
+            }
+            button {
+                position: relative;
+                margin-top: 25px;
+                background-color: $primaryColor;
+                outline: none;
+                height:36px;
+                border: none;
+                border-radius: 50px;
+                color: $primaryColorBlack;
+                cursor: pointer;
+                &:hover {
+                    background-color: $primaryColorBlack;
+                    color: $primaryColor;
+                    transition: .5s;
+                    border-radius: 50px;
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+}

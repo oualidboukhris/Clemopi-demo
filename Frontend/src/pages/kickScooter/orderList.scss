@@ -1,0 +1,304 @@
+$primaryColor : #ADC347;
+$primaryColorDark :#191A1A;
+
+
+.OrderList {
+    margin-top: 50px;
+
+    .header-order {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0 10px 0px;
+        align-items: center;
+
+        .title-order {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .buttons-order {
+            display: flex;
+
+            .btn-updateState {
+                margin: 0 8px;
+                background-color: $primaryColor;
+                outline: none;
+                border: none;
+                padding: 8px 10px;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+            }
+
+            .btn-exportData {
+                display: flex;
+                align-items: center;
+                margin: 0 8px;
+                background-color: $primaryColor;
+                outline: none;
+                border: none;
+                padding: 4px 10px;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+
+                .icon-btn-exportData {
+                    font-size: 20px;
+                    margin-right: 5px;
+                }
+            }
+
+            .btn-refresh {
+                display: flex;
+                align-items: center;
+                margin: 0 0 0 8px;
+                background-color: $primaryColor;
+                outline: none;
+                border: none;
+                padding: 4px 10px;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+
+                .icon-btn-refresh {
+                    font-size: 17px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .filter-order {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .filter {
+            display: flex;
+            flex-direction: column;
+
+            input[type="text"] {
+                margin-top: 5px;
+                height: 29px;
+                width: 200px;
+                outline: none;
+                border: none;
+                border: 1px solid #acc34798;
+                font-size: 14px;
+                padding-left: 6px;
+
+            }
+
+        }
+
+        .minutes-filter {
+            .slider-minutes {
+                width: 200px;
+
+                .label-range {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        .amount-filter {
+            .slider-amount {
+                width: 200px;
+
+                .label-range {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        .datePicker {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+
+            input[type="text"] {
+                margin-top: 5px;
+                height: 29px;
+                width: 100%;
+                outline: none;
+                border: none;
+                border: 1px solid #acc34798;
+                font-size: 14px;
+                padding-left: 6px;
+                cursor: pointer;
+            }
+
+            .icon-datePicker {
+                position: absolute;
+                top: 0;
+                right: 5px;
+                margin-top: 10px;
+                cursor: pointer;
+                color: $primaryColorDark;
+
+            }
+
+            .dateRange-element {
+                position: absolute;
+            }
+
+            .rdrCalendarWrapper {
+                position: absolute;
+                background-color: whitesmoke;
+                z-index: 2;
+                margin-top: 35px;
+            }
+
+            .label-range {
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    font-size: 15px;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+
+        .buttons-filter {
+            display: flex;
+            flex-direction: column;
+
+            .button-filter {
+                background-color: $primaryColorDark;
+                outline: none;
+                border: none;
+                padding: 8px 60px;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+                transition: .4s;
+
+                &:nth-child(2) {
+                    margin-top: 5px;
+                }
+
+                &:hover {
+                    background-color: $primaryColor;
+                    transition: .4s;
+                }
+            }
+        }
+
+    }
+
+    .main-order {
+        .table-wrapper {
+            position: relative;
+            margin-top: 20px;
+
+            .table-scroll {
+                overflow: auto;
+                height: 500px;
+
+                .table-order {
+                    width: 100%;
+                    border-spacing: 0;
+
+                    thead {
+                        position: sticky;
+                        top: 0;
+                        z-index: 1;
+
+                        tr {
+                            border-radius: 30px;
+                            background-color: #191A1A;
+                            text-align: left;
+                            font-size: 15px;
+
+                            th {
+                                color: whitesmoke;
+                                padding: 10px 0;
+                                font-weight: normal;
+
+                                &:nth-child(1) {
+                                    padding: 0;
+                                }
+
+                                input[type="checkbox"] {
+                                    accent-color: $primaryColor;
+                                    width: 14px;
+                                    height: 14px;
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        font-size: 14px;
+
+                        tr {
+                            color: $primaryColorDark;
+                            cursor: pointer;
+
+                            th {
+                                height: 20px;
+                                padding: 10px 0;
+                                text-align: left;
+
+                                &:nth-child(1) {
+                                    padding: 10px 15px 10px 10px;
+                                }
+
+                                input[type="checkbox"] {
+                                    accent-color: $primaryColor;
+                                    width: 14px;
+                                    height: 14px;
+                                    padding-top: 5px;
+
+                                }
+
+                                span {
+                                    margin-left: 15px;
+                                }
+                            }
+
+                            &:nth-child(even) {
+                                background-color: #191a1a04;
+                            }
+
+                            &:hover {
+                                background-color: #acc34723;
+                            }
+
+                            td {
+                                .check-pictures {
+                                    
+                                    color: #191A1A;
+                                    font-weight: bold;
+                                }
+                            }
+
+
+                        }
+                    }
+
+                }
+
+
+            }
+        }
+
+        .table-pagination {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+
+    }
+
+}

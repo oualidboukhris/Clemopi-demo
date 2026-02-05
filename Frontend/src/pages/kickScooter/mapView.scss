@@ -1,0 +1,92 @@
+$primaryColor : #ADC347;
+$primaryColorDark: #191A1A;
+
+.map-view {
+    margin-top: 60px;
+    .filter-kickscooter {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        input[type='checkbox'] {
+              color: white;
+              width: 14px;
+              height: 14px;
+              accent-color: $primaryColor;
+              margin-right: 3px;
+              border: 1px solid gray;  
+              cursor: pointer;
+          }
+          label {
+            font-size: 14px;
+            margin-right: 10px;
+          }
+        .filter-battery {
+            display: flex;
+            flex-direction: column; 
+        }
+       
+        .filter-disable-state{
+            width: 435px;
+            display: flex;
+            flex-direction: column;
+            .checkbox-items {
+                display: grid;
+                grid-template-columns: auto auto auto ;
+                column-gap: 10px;   
+            }
+        }
+        .filter-icon-color {
+            display: flex;
+            flex-direction: column; 
+            input[type="radio"]{
+                accent-color: $primaryColor;
+                margin-right: 2px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+        .buttons-filter {
+            display: flex;
+            flex-direction: column;
+            .button-filter{
+                background-color: $primaryColorDark;
+                outline: none;
+                border: none;
+                padding: 8px 60px;
+                color: white;
+                font-size: 13px;
+                cursor: pointer;
+                &:nth-child(2){
+                    margin-top: 5px;
+                }
+            }
+        }
+    
+        
+    }
+    .panel-map-view {
+        margin-top: 15px;
+        .panel-control-map-view{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto auto 8px auto;
+            .show-region-mark {
+                display: flex;
+                align-items: center;
+                input[type="checkbox"]{
+                    width: 14px;
+                    height: 14px;
+                    accent-color: $primaryColor;
+                    margin-right: 4px;
+                    cursor: pointer;
+                }
+            }
+         }
+    }
+  
+   
+  
+
+    
+}

@@ -1,0 +1,410 @@
+$primaryColor: #adc347;
+$primaryColorDark: #191a1a;
+
+.KickScooterList {
+  margin-top: 50px;
+  .alert-message {
+    position: absolute;
+    right: 5px;
+    
+  }
+  .header-kickScooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 10px 0px;
+    align-items: center;
+    .title-kickScooter {
+      font-weight: bold;
+    }
+    .buttons-kickScooter {
+      display: flex;
+      .btn-updateState {
+        margin: 0 8px;
+        background-color: $primaryColor;
+        outline: none;
+        border: none;
+        padding: 8px 10px;
+        color: white;
+        font-size: 13px;
+        cursor: pointer;
+        &:disabled {
+          background-color: #7b8b32;
+          color: whitesmoke;
+          cursor: auto;
+        }
+      }
+
+      .btn-exportData {
+        display: flex;
+        align-items: center;
+        margin: 0 8px;
+        background-color: $primaryColor;
+        outline: none;
+        border: none;
+        padding: 4px 10px;
+        color: white;
+        font-size: 13px;
+        cursor: pointer;
+        .icon-btn-exportData {
+          font-size: 20px;
+          margin-right: 5px;
+        }
+      }
+      .btn-refresh {
+        display: flex;
+        align-items: center;
+        margin: 0 0 0 8px;
+        background-color: $primaryColor;
+        outline: none;
+        border: none;
+        padding: 4px 10px;
+        color: white;
+        font-size: 13px;
+        cursor: pointer;
+        .icon-btn-refresh {
+          font-size: 17px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+      .dropdown {
+        position: relative;
+        .input-dropdown {
+          position: relative;
+          input[type="text"] {
+            margin-top: 5px;
+            height: 29px;
+            width: 100%;
+            outline: none;
+            border: 1px solid #acc34798;
+            color: $primaryColorDark;
+            font-size: 14px;
+            padding-left: 6px;
+            cursor: pointer;
+          }
+          .dropdown-icon {
+            position: absolute;
+            font-size: 12px;
+            right: 5px;
+            margin-top: 12px;
+            cursor: pointer;
+          }
+        }
+        .option {
+          position: absolute;
+          width: 100%;
+          border-left: 1px solid $primaryColor;
+          border-bottom: 1px solid $primaryColor;
+          border-right: 1px solid $primaryColor;
+          background-color: white;
+          z-index: 2;
+          overflow: hidden;
+          display: none;
+          .dropdown-item {
+            font-size: 14px;
+            width: 100%;
+            padding: 1px 2px;
+            &:hover {
+              background-color: $primaryColor;
+              color: white;
+              cursor: pointer;
+            }
+          }
+          &.active {
+            display: block;
+          }
+        }
+      }
+  
+   
+
+  .filter-kickscooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    input[type="checkbox"] {
+      color: white;
+      width: 14px;
+      height: 14px;
+      accent-color: $primaryColor;
+      margin-right: 3px;
+      border: 1px solid gray;
+    }
+    label {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .filter-battery {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-disable-state {
+      width: 435px;
+      display: flex;
+      flex-direction: column;
+      .checkbox-items {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 10px;
+      }
+    }
+    .buttons-filter {
+      display: flex;
+      flex-direction: column;
+      .button-filter {
+        background-color: $primaryColorDark;
+        outline: none;
+        border: none;
+        padding: 8px 60px;
+        color: white;
+        font-size: 13px;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  .main-kickscooter {
+    .table-wrapper {
+      position: relative;
+      margin-top: 20px;
+      .table-scroll {
+        overflow: auto;
+        height: 500px;
+        .table-kickscooter {
+          width: 100%;
+          border-spacing: 0;
+          thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            tr {
+              border-radius: 30px;
+              background-color: #191a1a;
+              text-align: left;
+              font-size: 15px;
+              
+
+              th {
+                max-width: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: whitesmoke;
+                padding: 10px 0;
+                font-weight: normal;
+
+                &:nth-child(1) {
+                  padding: 0;
+                }
+                input[type="checkbox"] {
+                  accent-color: $primaryColor;
+                  width: 14px;
+                  height: 14px;
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
+
+          tbody {
+            font-size: 14px;
+            tr {
+              color: $primaryColorDark;
+              cursor: pointer;
+
+              th {
+                max-width: 50px;
+                padding: 10px 0;
+                text-align: left;
+                &:nth-child(1) {
+                  padding: 10px 0 10px 10px;
+                }
+                input[type="checkbox"] {
+                  accent-color: $primaryColor;
+                  width: 14px;
+                  height: 14px;
+                  padding-top: 5px;
+                }
+                span {
+                  margin-left: 15px;
+                }
+              }
+
+              &:nth-child(even) {
+                background-color: #191a1a04;
+              }
+
+              &:hover {
+                background-color: #acc34723;
+              }
+
+              td {
+                max-width: 50px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                input {
+                  &.mobileToggle {
+                    opacity: 0; // hides checkbox
+                    position: absolute;
+                    & + label {
+                      cursor: pointer;
+                      position: relative;
+                      display: inline-block;
+                      user-select: none;
+                      transition: 0.4s ease;
+                      height: 22px;
+                      width: 44px;
+                      border: 1px solid #e4e4e4;
+                      border-radius: 60px;
+                      &:before {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+                        height: 20px;
+                        width: 44px;
+                        top: 0;
+                        left: 0;
+                        border-radius: 30px;
+                      }
+
+                      &:after {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1),
+                          0 2px 0px 0 hsla(0, 0%, 0%, 0.04),
+                          0 4px 9px hsla(0, 0%, 0%, 0.13),
+                          0 3px 3px hsla(0, 0%, 0%, 0.05);
+                        transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+                        background: whitesmoke;
+                        height: 20px;
+                        width: 20px;
+                        left: 0px;
+                        border-radius: 60px;
+                      }
+                    }
+
+                    &:checked {
+                      & + label:before {
+                        background: $primaryColor; // Active Color
+                        transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+                      }
+
+                      & + label:after {
+                        left: 54px - 30px;
+                      }
+                    }
+                  }
+                }
+
+                .status-kickscooter {
+                  font-size: 11px;
+                  color: white;
+                  background-color: $primaryColor;
+                  border-radius: 30px;
+                  &.reserved {
+                    padding: 5px 8px;
+                    background-color: #eb2233;
+                  }
+                  &.scanned {
+                    padding: 5px 8px;
+                    background-color: #adc347;
+                  }
+                }
+              }
+              .battery {
+                font-weight: bold;
+                &.faible {
+                  color: red;
+                }
+                &.medium {
+                  color: orange;
+                }
+                &.high {
+                  color: green;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .table-pagination {
+      margin-top: 30px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  
+}
+@media only screen and (max-width: 768px) {
+  .header-kickScooter {
+    .buttons-kickScooter {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+  }
+  .filter-kickscooter {
+    font-size: 14px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px; 
+    label {
+      font-size: 12px;
+    }
+  }
+
+  .table-wrapper {
+      .table-kickscooter {
+       
+        thead {
+          tr {
+            th {
+              font-size: 13px;  
+            }
+          }
+        }
+        tbody {
+          tr {
+            font-size: 12px;
+          }
+        }
+      }
+    
+  }
+   
+}
+@media only screen and (max-width: 992px) {
+  .header-kickScooter {
+    .buttons-kickScooter {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+  }
+  .filter-kickscooter {
+    font-size: 14px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px; 
+    label {
+      font-size: 12px;
+    }
+  }
+
+}
+@media only screen and (min-width: 1200px) {
+
+}

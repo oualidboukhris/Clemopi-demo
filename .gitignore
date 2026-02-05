@@ -1,0 +1,99 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnp.*
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+*.tgz
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Environment files (do NOT commit API keys or secrets)
+.env
+.env.*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs and runtime files
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+*.gz
+
+# Uploads / user-generated files
+uploads/*
+!uploads/Avatar.png
+
+# OS generated files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Editors & IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Misc caches
+.cache/
+.parcel-cache/
+.sass-cache/
+.cache-loader/
+
+# Frontend frameworks (React / Next / Nuxt)
+.next/
+.nuxt/
+# React app build (common monorepo paths)
+Frontend/frontEnd-Clemopi/build/
+Frontend/frontEnd-Clemopi/node_modules/
+
+# Backend common
+Backend/node_modules/
+node_modules/
+
+# Testing / temp
+coverage/
+jest-report/
+*.local
+*.tmp
+*.temp
+
+# Docker / compose local overrides
+docker-compose.override.yml
+.env.docker-compose
+
+# Package manager lock files are usually committed — do not ignore unless intentional
+
+# Flutter / Dart (MobileApp)
+MobileApp/.dart_tool/
+MobileApp/.dart_tool 2/
+MobileApp/build/
+MobileApp/.flutter-plugins-dependencies 2
+MobileApp/ios/Pods/
+MobileApp/ios/Podfile.lock
+MobileApp/macos/Pods/
+MobileApp/macos/Podfile.lock
+MobileApp/.packages
+MobileApp/.pub-cache/
+MobileApp/.pub/
+*.iml
+*.ipr
+*.iws
+
+# End of file

@@ -1,0 +1,22 @@
+
+# Backend/.dockerignore
+node_modules
+npm-debug.log
+.env
+.git
+.gitignore
+*.md
+.DS_Store
+
+# Frontend/.dockerignore
+node_modules
+npm-debug.log
+.env
+.env.local
+.env.development
+.env.production
+.git
+.gitignore
+*.md
+.DS_Store
+build
