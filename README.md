@@ -35,8 +35,8 @@ Web Dashboard (React)─┘                           │
 
 ```bash
 # Clone repository
-git clone https://github.com/Achraf-ahrach/CleMoPI.git
-cd CleMoPI
+git clone https://github.com/oualidboukhris/Clemopi-demo.git
+cd Clemopi-demo
 
 # Configure environment
 cp .env.example .env
